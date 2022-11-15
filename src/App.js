@@ -18,11 +18,20 @@ function App() {
     // console.log(contacts.length)
   }
 
-// console.log(contactsDB)
+  function sortByName (){
+    let copyArray = [...contactsDB];
+    const sorted = copyArray.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+    // console.log(copyArray)
+    // console.log(sorted)
+    setContact(sorted);
+  }
   return (
     <div className="App">
       <button onClick={addRandomContact}>
         Add Random Contact
+      </button>
+      <button onClick={sortByName}>
+        Sort by Name
       </button>
       <table>
         <tbody>
