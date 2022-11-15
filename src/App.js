@@ -20,10 +20,17 @@ function App() {
 
   function sortByName (){
     let copyArray = [...contactsDB];
-    const sorted = copyArray.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+    copyArray.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
     // console.log(copyArray)
     // console.log(sorted)
-    setContact(sorted);
+    setContact(copyArray);
+  }
+  function sortByPop (){
+    let copyArray = [...contactsDB];
+    copyArray.sort((a,b) => b.popularity - a.popularity)
+    console.log(copyArray)
+    // console.log(sorted)
+    setContact(copyArray);
   }
   return (
     <div className="App">
@@ -32,6 +39,9 @@ function App() {
       </button>
       <button onClick={sortByName}>
         Sort by Name
+      </button>
+      <button onClick={sortByPop}>
+        Sort by Popularity
       </button>
       <table>
         <tbody>
